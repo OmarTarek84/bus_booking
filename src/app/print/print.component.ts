@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Seat } from '../models/seat.model';
@@ -19,8 +20,7 @@ export class PrintComponent implements OnInit {
   depTime;
   seatNumbers: Seat[] = [];
   busName;
-  constructor(private router: Router) {
-    console.log(this.router.getCurrentNavigation().extras.state.data);
+  constructor(private router: Router, private http: HttpClient) {
     this.from = this.router.getCurrentNavigation().extras.state.data.from;
     this.to = this.router.getCurrentNavigation().extras.state.data.to;
     this.dateFrom = this.router.getCurrentNavigation().extras.state.data.dateFrom;
@@ -34,6 +34,23 @@ export class PrintComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  downloadPDF() {
+    const requestBody = {
+      orderId: this.orderId,
+      dateFrom: this.dateFrom,
+      fullName: this.fullName,
+      depTime: this.depTime,
+      seats: this.seatNumbers.map(seat => {
+        return seat.seatNumber;
+      })
+    };
+    return this.http.post('http://localhost:8080/create-pdf', requestBody, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    }).subscribe();
   }
 
 }

@@ -79,7 +79,7 @@ module.exports = buildSchema(`
     loginUser(userInput: UserInput): AuthData!
     searchRoutes(from: String!, to: String!, dateFrom: String!): [Route!]!
     searchRoute(_id: ID!): Route!
-    searchAdminRoute(dateFrom: String!, depTime: String!): [Route!]!
+    searchAdminRoute(dateFrom: String!, depTime: String!, from: String!, to: String!): [Route!]!
   }
 
   type RootMutation {

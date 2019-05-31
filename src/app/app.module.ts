@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: 'search/seats/:id', component: SelectSeatsComponent, canActivate: [BookedGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'create-route', component: CreateRouteComponent, canActivate: [AuthGuard]},
-  {path: 'admin-routes', component: AvailableRoutesComponent}
+  {path: 'admin-routes', component: AvailableRoutesComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

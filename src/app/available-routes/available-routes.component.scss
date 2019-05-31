@@ -35,16 +35,13 @@
           }
     }
     &__boxes {
-        display: flex;
-        justify-content: space-between;
         margin-top: 20px;
-        flex-wrap: wrap;
+        flex: 0 0 45%;
+        @media screen and (max-width: 700px) {
+            flex: 0 0 90%;
+            margin-top: 10px;
+        }
         &__box {
-            @media screen and (max-width: 700px) {
-                flex: 0 0 90%;
-                margin-top: 10px;
-            }
-            flex: 0 0 48%;
             border: 1px solid #5050f8;
             padding: 10px;
             text-align: center;
@@ -70,4 +67,10 @@
     color: white;
     font-size: 19px;
     padding: 10px;
+}
+
+.flexx {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }

@@ -7,6 +7,13 @@ interface ResultDataa {
   data: any;
 }
 
+interface ElementData {
+  style?: any;
+  value?: any;
+  setAttribute?: any;
+  nextElementSibling?: any;
+}
+
 @Component({
   selector: 'app-select-seats',
   templateUrl: './select-seats.component.html',
@@ -65,7 +72,7 @@ export class SelectSeatsComponent implements OnInit {
         return resSeats.seatNumber;
       });
       return bookedSeats.map(bookedSeat => {
-        allInputValues.forEach(i => {
+        allInputValues.forEach((i: ElementData) => {
           if (bookedSeat === i.value) {
             i.setAttribute('disabled', 'true');
             i.style.cursor = 'auto';

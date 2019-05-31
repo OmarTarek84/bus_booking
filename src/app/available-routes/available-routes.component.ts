@@ -18,6 +18,8 @@ export class AvailableRoutesComponent implements OnInit {
   searched = false;
   foundOrders = [];
   isLoading = false;
+  fSelect = 'Cairo';
+  tSelect = 'Hurghada';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -30,8 +32,8 @@ export class AvailableRoutesComponent implements OnInit {
     this.searched = false;
     const requestBody = {
       query: `
-        query SearchAdminRoute($dateFrom: String!, $depTime: String!) {
-          searchAdminRoute(dateFrom: $dateFrom, depTime: $depTime) {
+        query SearchAdminRoute($dateFrom: String!, $depTime: String!, $from: String!, $to: String!) {
+          searchAdminRoute(dateFrom: $dateFrom, depTime: $depTime, from: $from, to: $to) {
             orders {
               _id
               fullName
@@ -50,7 +52,9 @@ export class AvailableRoutesComponent implements OnInit {
       `,
       variables: {
         dateFrom: this.searchForm.value.dateFrom,
-        depTime: this.searchForm.value.depTime
+        depTime: this.searchForm.value.depTime,
+        from: this.searchForm.value.from,
+        to: this.searchForm.value.to
       }
     };
 

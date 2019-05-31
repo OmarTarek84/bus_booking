@@ -5,9 +5,27 @@
     <input type="date" id="dateFrom" ngModel required name="dateFrom" />
     <label for="depTime">Depart Time</label>
     <input type="time" id="depTime" ngModel required name="depTime" />
+    <label for="depTime">From</label>
+    <select id="leaving" required [(ngModel)]="fSelect" name="from">
+      <option value="Cairo">Cairo</option>
+      <option value="Alex">Alex</option>
+      <option value="Hurghada">Hurghada</option>
+      <option value="Matrouh">Matrouh</option>
+      <option value="Fayed">Fayed</option>
+      <option value="Sharm">Sharm</option>
+    </select>
+    <label for="leaving">To</label>
+    <select id="leaving" required [(ngModel)]="tSelect" name="to">
+      <option value="Cairo">Cairo</option>
+      <option value="Alex">Alex</option>
+      <option value="Hurghada">Hurghada</option>
+      <option value="Matrouh">Matrouh</option>
+      <option value="Fayed">Fayed</option>
+      <option value="Sharm">Sharm</option>
+    </select>
     <button type="submit" [disabled]="f.invalid">Search!</button>
   </form>
-  <div *ngIf="searched">
+  <div *ngIf="searched" class="flexx">
   <div class="orders__boxes" *ngFor="let order of foundOrders[0]">
     <div class="orders__boxes__box">
       <h4>#{{order._id}}</h4>

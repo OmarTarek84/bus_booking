@@ -133,7 +133,9 @@ module.exports = {
     searchAdminRoute: (args, req) => {
         const dateFrom = new Date(args.dateFrom).toLocaleDateString();
         const depTime = args.depTime;
-        return Route.find({dateFrom: dateFrom, depTime: depTime}).then(routes => {
+        const from = args.from;
+        const to = args.to;
+        return Route.find({dateFrom: dateFrom, depTime: depTime, from: from, to: to}).then(routes => {
             return routes.map(route => {
                 return transformRoutes(route);
             });

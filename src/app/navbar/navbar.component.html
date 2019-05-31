@@ -19,7 +19,7 @@
       <li *ngIf="isAdmin">
         <a routerLink="/create-route">Create route</a>
       </li>
-      <li>
+      <li *ngIf="isAdmin">
         <a routerLink="/admin-routes">Routes</a>
       </li>
       <li *ngIf="isAdmin" (click)="onLogout()">
