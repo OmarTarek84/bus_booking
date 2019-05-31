@@ -1,0 +1,175 @@
+<div class="modal">
+  <div class="modal__select-seats-parent" *ngIf="!isLoading">
+      <p class="modal__select-seats-parent__close" routerLink="/search">close</p>
+    <div class="modal__select-seats-parent__select-seats">
+      <h2>Select your Seat(s)</h2>
+      <div class="reserved_details">
+        <div>
+          <img src="../../../assets/images/bookseat.png" />
+          <span>Booked!</span>
+        </div>
+        <div>
+          <img src="../../../assets/images/bseat.png" />
+          <span>Available</span>
+        </div>
+      </div>
+      <div class="modal__select-seats-parent__select-seats__flex">
+
+        <div class="modal__select-seats-parent__select-seats__flex__seats">
+          <p>Driver</p>
+          <div class="modal__select-seats-parent__select-seats__flex__seats__flex-seats">
+            <div class="modal__select-seats-parent__select-seats__flex__seats__flex-seats__left">
+              <div class="two-seats">
+                <div class="seat_parent">
+                  <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="A1" />
+                  <div class="seat_parent__image">
+                    <img src="../../../assets/images/bseat.png" />
+                  </div>
+                </div>
+                <div class="seat_parent">
+                  <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="A2" />
+                  <div class="seat_parent__image">
+                      <img src="../../../assets/images/bseat.png" />
+
+                  </div>
+                </div>
+              </div>
+              <div class="two-seats">
+                <div class="seat_parent">
+                  <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="B1" />
+                  <div class="seat_parent__image">
+                      <img src="../../../assets/images/bseat.png" />
+
+                  </div>
+                </div>
+                <div class="seat_parent">
+                  <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="B2" />
+                  <div class="seat_parent__image">
+                      <img src="../../../assets/images/bseat.png" />
+
+                  </div>
+                </div>
+              </div>
+              <div class="two-seats">
+                <div class="seat_parent">
+                  <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="C1" />
+                  <div class="seat_parent__image">
+                      <img src="../../../assets/images/bseat.png" />
+
+                  </div>
+                </div>
+                <div class="seat_parent">
+                  <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="C2" />
+                  <div class="seat_parent__image">
+                    <img src="../../../assets/images/bseat.png" />
+                  </div>
+                </div>
+              </div>
+              <div class="two-seats">
+                  <div class="seat_parent">
+                    <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="D1" />
+                    <div class="seat_parent__image">
+                      <img src="../../../assets/images/bseat.png" />
+                    </div>
+                  </div>
+                  <div class="seat_parent">
+                    <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="D2" />
+                    <div class="seat_parent__image">
+                      <img src="../../../assets/images/bseat.png" />
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="modal__select-seats-parent__select-seats__flex__seats__flex-seats__right">
+              <div class="two-seats">
+                  <div class="seat_parent">
+                    <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="A3" />
+                    <div class="seat_parent__image">
+                      <img src="../../../assets/images/bseat.png" />
+                    </div>
+                  </div>
+                  <div class="seat_parent">
+                    <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="A4" />
+                    <div class="seat_parent__image">
+                      <img src="../../../assets/images/bseat.png" />
+                    </div>
+                  </div>
+              </div>
+              <div class="two-seats">
+                <div class="seat_parent">
+                  <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="B3" />
+                  <div class="seat_parent__image">
+                    <img src="../../../assets/images/bseat.png" />
+                  </div>
+                </div>
+                <div class="seat_parent">
+                  <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="B4" />
+                  <div class="seat_parent__image">
+                    <img src="../../../assets/images/bseat.png" />
+                  </div>
+                </div>
+              </div>
+              <div class="two-seats">
+                <div class="seat_parent">
+                  <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="C3" />
+                  <div class="seat_parent__image">
+                    <img src="../../../assets/images/bseat.png" />
+                  </div>
+                </div>
+                <div class="seat_parent">
+                  <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="C4" />
+                  <div class="seat_parent__image">
+                    <img src="../../../assets/images/bseat.png" />
+                  </div>
+                </div>
+              </div>
+              <div class="two-seats">
+                <div class="seat_parent">
+                  <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="D3" />
+                  <div class="seat_parent__image">
+                    <img src="../../../assets/images/bseat.png" />
+                  </div>
+                </div>
+                <div class="seat_parent">
+                  <input class="seatReserve" type="checkbox" (change)="onBookSeats($event)" value="D4" />
+                  <div class="seat_parent__image">
+                    <img src="../../../assets/images/bseat.png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal__select-seats-parent__select-seats__flex__order">
+          <div class="modal__select-seats-parent__select-seats__flex__order__table-parent">
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Seats</th>
+                  <th>Fare</th>
+                  <th>Class</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let seat of reservedSeats">
+                  <td>{{seat.seatNumber}}</td>
+                  <td>${{fare}}</td>
+                  <td>{{coachType}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal__select-seats-parent__select-seats__flex__order__total">
+            <p>Total: <span>${{totalPrice}}</span></p>
+          </div>
+          <div class="modal__select-seats-parent__select-seats__flex__order__button">
+            <button (click)="onGoToUserform()" [disabled]="totalPrice <= 0">Confirm</button>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

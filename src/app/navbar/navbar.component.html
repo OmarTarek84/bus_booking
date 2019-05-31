@@ -1,0 +1,30 @@
+<nav class="home">
+  <input type="checkbox" #checkbox (change)="onChangeCheck(checkbox)" />
+    <div class="flex">
+    <div class="burger" (click)="onToggleSidemenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="logo">
+      <h1>Bus Logo</h1>
+    </div>
+    <ul>
+      <li>
+        <a routerLink="/">Home</a>
+      </li>
+      <li *ngIf="!isAdmin">
+        <a routerLink="/login">Login</a>
+      </li>
+      <li *ngIf="isAdmin">
+        <a routerLink="/create-route">Create route</a>
+      </li>
+      <li>
+        <a routerLink="/admin-routes">Routes</a>
+      </li>
+      <li *ngIf="isAdmin" (click)="onLogout()">
+        <a>Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

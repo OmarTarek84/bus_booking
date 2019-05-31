@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: rgb(248, 246, 246);
+  position: relative;
+  min-height: 100vh;
+}

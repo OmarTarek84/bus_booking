@@ -1,0 +1,86 @@
+.ticket-parent {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  @media screen and (max-width: 500px) {
+    width: 95%;
+  }
+  &__ticket {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 2px 2px 7px 1px;
+    h5 {
+      text-align: center;
+    }
+    p.print {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      font-size: 12px;
+    }
+    &__route {
+      display: flex;
+      justify-content: space-between;
+      background-color: rgb(80, 80, 248);
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      margin-top: 30px;
+      @media screen and (max-width: 500px) {
+        flex-wrap: wrap;
+      }
+      p {
+        flex: 0 0 30%;
+        text-align: center;
+        font-size: 15px;
+        @media screen and (max-width: 500px) {
+          flex: 0 0 50%;
+          margin-top: 10px;
+          text-align: center;
+          font-size: 13px;
+        }
+      }
+    }
+    &__passenger, &__bus {
+      overflow-x: auto;
+      table {
+        border: 1px solid grey;
+        margin-top: 20px;
+        width: 100%;
+        height: 60px;
+        @media screen and (max-width: 500px) {
+          height: 80px;
+        }
+        tbody {
+          margin-top: 10px;
+        }
+        thead th {
+          @media screen and (max-width: 500px) {
+            font-size: 12.5px;
+          }
+        }
+        thead th,
+        tbody td {
+          text-align: center;
+        }
+        tbody tr td {
+          font-size: 12.5px;
+          @media screen and (max-width: 500px) {
+            font-size: 10.5px;
+          }
+          p.userEmail {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+.counter {
+  text-align: center;
+  color: red;
+  margin-top: 15px;
+}

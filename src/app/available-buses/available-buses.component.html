@@ -1,0 +1,29 @@
+<div class="available_buses">
+  <h4 *ngIf="!noRoutes">{{availableBuses[0][0].from}} To {{availableBuses[0][0].to}}</h4>
+  <span *ngIf="!noRoutes">{{availableBuses[0][0].dateFrom}}</span>
+  <div class="table_parent">
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Bus Name</th>
+            <th>Dept Time</th>
+            <th>Coach Type</th>
+            <th>Fare</th>
+            <th>-</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bus of availableBuses[0]">
+            <td>{{bus.busName}}</td>
+            <td>{{bus.depTime}}</td>
+            <td>{{bus.coachType}}</td>
+            <td>${{bus.fare}}</td>
+            <td>
+              <button (click)="onGoToSeats(bus._id, bus.fare, bus.coachType, bus.from, bus.to, bus.dateFrom, bus.depTime, bus.busName)">View Seats</button>
+            </td>
+          </tr>
+        </tbody>
+        <p class="noroutes" *ngIf="noRoutes">No Bus Routes are Found!!</p>
+      </table>
+  </div>
+</div>

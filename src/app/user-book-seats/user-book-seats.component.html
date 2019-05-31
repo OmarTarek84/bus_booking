@@ -1,0 +1,36 @@
+<div class="book-seats">
+  <div class="book-seats__flex">
+    <div class="book-seats__flex__userForm">
+      <form class="book-seats__flex__userForm__form" (ngSubmit)="onPurchaseSeats()" #f="ngForm">
+        <div class="book-seats__flex__userForm__form__input">
+          <label for="name">Full Name</label>
+          <input type="text" name="name" id="name" ngModel required #name="ngModel" />
+          <p style="color: red;" *ngIf="name.hasError('required')&&name.touched">This Field Is Required!</p>
+        </div>
+        <div class="book-seats__flex__userForm__form__input">
+          <label for="mobile">Your Mobile Number</label>
+          <input type="tel" name="mobile" id="mobile" ngModel required #mobile="ngModel" />
+          <p style="color: red;" *ngIf="mobile.hasError('required')&&mobile.touched">This Field Is Required!</p>
+        </div>
+        <div class="book-seats__flex__userForm__form__input">
+          <label for="email">Your email Address</label>
+          <input type="email" name="email" id="email" ngModel required email #email="ngModel" />
+          <p style="color: red;" *ngIf="email.hasError('required')&&email.touched">This Field Is Required!</p>
+          <p style="color: red;" *ngIf="email.hasError('email')&&email.touched">Email Is Not Valid!</p>
+        </div>
+        <button type="submit" [disabled]="!f.valid">Submit</button>
+      </form>
+    </div>
+    <div class="book-seats__flex__details">
+      <div class="book-seats__flex__details__parent">
+        <h3>Journey Details</h3>
+        <hr>
+        <h4>{{from}} To {{to}}</h4>
+        <p>Date and Time: <span>{{dateFrom}} :{{depTime}}</span></p>
+        <p>{{busName}}</p>
+        <p>Coach Type: <span>{{coachType}}</span></p>
+        <p>Seats no: <span>(<span *ngFor="let seat of seats">{{seat.seatNumber}} </span>)</span></p>
+      </div>
+    </div>
+  </div>
+</div>

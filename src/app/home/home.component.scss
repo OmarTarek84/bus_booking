@@ -1,0 +1,177 @@
+.homeImage {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url('../../assets/images/flixbus-city-hub.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 65vh;
+  h1 {
+    padding-top: 30px;
+    color: white;
+    text-align: center;
+    @media screen and (max-width: 750px) {
+      font-size: 23px;
+    }
+  }
+  form {
+      padding-bottom: 10px;
+  }
+  &__flex {
+    display: flex;
+    background-color: rgba(239, 239, 239, .7);
+    flex-wrap: wrap;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 32px;
+    select, input {
+      display: block;
+      width: 90%;
+      padding: 5px 9px;
+      margin-top: 3px;
+      outline: none;
+    }
+    @media screen and (max-width: 370px) {
+      input {
+        max-width: 150px;
+      }
+    }
+    &__leavingfrom {
+      flex: 0 0 47%;
+      margin: 7px;
+      @media screen and (max-width: 750px) {
+        flex: 0 0 100%;
+      }
+    }
+    &__goingto {
+      flex: 0 0 47%;
+      margin: 7px;
+      @media screen and (max-width: 750px) {
+        flex: 0 0 100%;
+      }
+    }
+    &__date {
+      flex: 0 0 100%;
+      margin: 7px;
+    }
+  }
+  button[type="submit"] {
+    text-align: center;
+    width: 60%;
+    background-color: rgb(80, 80, 248);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}
+
+.features {
+  margin-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    @media screen and (max-width: 750px) {
+      flex-wrap: wrap;
+    }
+    &__desc {
+      flex: 0 0 30%;
+        @media screen and (max-width: 750px) {
+          flex: 0 0 90%;
+        }
+      margin: 5px;
+      &__image {
+        img {
+          width: 70px;
+          height: 70px;
+          border-radius: 50%
+        }
+      }
+      &__details {
+        p {
+          font-size: 13px;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+}
+
+.roadsandwhy {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 20px;
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    @media screen and (max-width: 750px) {
+      flex-wrap: wrap;
+    }
+    &__roads {
+      flex: 0 0 47%;
+      @media screen and (max-width: 750px) {
+        flex: 0 0 90%;
+      }
+      margin: 7px;
+      background-color: white;
+      padding: 8px;
+      border-radius: 4px;
+      h3 {
+        text-align: center;
+        color: rgb(80, 80, 248);
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style-type: disc;
+        li {
+          flex: 0 0 35%;
+          margin: 8px;
+          font-size: 12.5px;
+        }
+      }
+    }
+
+    &__why {
+      flex: 0 0 47%;
+      @media screen and (max-width: 750px) {
+        flex: 0 0 90%;
+      }
+      margin: 7px;
+      background-color: white;
+      padding: 8px;
+      border-radius: 4px;
+      h3 {
+        text-align: center;
+        color: rgb(80, 80, 248);
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        margin-top: 20px;
+        text-align: center;
+        list-style-type: none;
+        li {
+          margin-top: 15px;
+          text-align: center;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+  }
+}

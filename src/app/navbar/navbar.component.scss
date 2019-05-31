@@ -1,0 +1,96 @@
+nav {
+  height: 11vh;
+  background-color: rgb(46, 46, 253);
+  position: relative;
+  z-index: 999;
+  input[type="checkbox"] {
+    @media screen and (min-width: 580px) {
+      display: none
+    }
+    position: absolute;
+    display: inline-block;
+    top: 14px;
+    width: 38px;
+    height: 32px;
+    left: 12px;
+    opacity: 0;
+    cursor: pointer;
+    &:checked ~ .flex ul {
+      transform: translateX(0);
+    }
+  }
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .logo {
+      padding-left: 30px;
+      line-height: 11vh;
+      color: white;
+      @media screen and (max-width: 580px) {
+        padding-right: 10px;
+        order: 1;
+      }
+    }
+    .burger {
+      display: none;
+      @media screen and (max-width: 580px) {
+        display: block;
+        cursor: pointer;
+        padding-left: 10px;
+        margin-top: 11px;
+        cursor: pointer;
+        order: -1;
+      }
+      div {
+        margin: 5px;
+        width: 30px;
+        height: 4px;
+        background-color: white;
+      }
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      padding-right: 30px;
+      display: flex;
+      justify-content: space-around;
+      line-height: 11vh;
+      @media screen and (max-width: 580px) {
+        position: absolute;
+        top: 11vh;
+        height: 89vh;
+        width: 100px;
+        background-color: rgb(46, 46, 253);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        order: 0;
+        transform: translateX(-100%);
+        transition: transform .5s;
+      }
+      li {
+        list-style: none;
+        @media screen and (max-width: 580px) {
+          width: 100%;
+        }
+        a {
+          @media screen and (max-width: 580px) {
+            width: 110%;
+            text-align: center;
+          }
+          text-decoration: none;
+          background-color: transparent;
+          padding-left: 10px;
+          padding-right: 10px;
+          height: 100%;
+          display: inline-block;
+          color: white;
+          &:hover {
+            background-color: rgba(80, 80, 248, 0.95);
+          }
+        }
+      }
+    }
+  }
+}

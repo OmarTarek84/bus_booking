@@ -1,0 +1,73 @@
+.orders {
+    margin: 40px;
+    h1 {
+        text-decoration: underline;
+        text-align: center;
+    }
+    &__form {
+        margin-top: 20px;
+        label[for="depTime"] {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        select, input {
+            display: block;
+            width: 100%;
+            padding: 4px 6px;
+            margin-top: 3px;
+            outline: none;
+        }
+        button[type="submit"] {
+            background-color: #5050f8;
+            border: none;
+            cursor: pointer;
+            color: white;
+            border-radius: 5px;
+            padding: 6px 10px;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            &:disabled {
+              opacity: .5;
+              cursor: auto;
+            }
+          }
+    }
+    &__boxes {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        &__box {
+            @media screen and (max-width: 700px) {
+                flex: 0 0 90%;
+                margin-top: 10px;
+            }
+            flex: 0 0 48%;
+            border: 1px solid #5050f8;
+            padding: 10px;
+            text-align: center;
+            h4 {
+                font-weight: 600;
+                font-size: 21px;
+            }
+            &__details {
+                margin-top: 10px;
+                p {
+                    margin: 4px;
+                }
+            }
+        }
+    }
+}
+
+.noOrders {
+    text-align: center;
+    margin-top: 20px;
+    background-color: red;
+    max-width: 100%;
+    color: white;
+    font-size: 19px;
+    padding: 10px;
+}

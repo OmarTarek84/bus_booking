@@ -1,0 +1,87 @@
+<div class="homeImage">
+  <h1>The Best Way To Book bus tickets</h1>
+  <form (ngSubmit)="onSearchBus()" #f="ngForm">
+    <div class="homeImage__flex">
+      <div class="homeImage__flex__leavingfrom">
+        <label for="leaving">Leaving From</label>
+        <select id="leaving" required [(ngModel)]="fromSelect" name="from" (change)="onLeave($event)">
+          <option value="Cairo">Cairo</option>
+          <option value="Alex">Alex</option>
+          <option value="Hurghada">Hurghada</option>
+          <option value="Matrouh">Matrouh</option>
+          <option value="Fayed">Fayed</option>
+          <option value="Sharm">Sharm</option>
+        </select>
+      </div>
+      <div class="homeImage__flex__goingto">
+          <label for="going">Going To</label>
+          <select id="going" required [(ngModel)]="toSelect" name="to">
+            <option *ngFor="let place of places" [value]="place.value">{{place.value}}</option>
+          </select>
+      </div>
+      <div class="homeImage__flex__date">
+          <label for="date">Departing On</label>
+          <input type="date" name="dateFrom" required ngModel />
+      </div>
+      <button type="submit">Search Buses</button>
+    </div>
+  </form>
+</div>
+<div class="features">
+  <div class="features__flex">
+    <div class="features__flex__desc">
+      <div class="features__flex__desc__image">
+        <img src="../../assets/images/fast.png" alt="myImage" />
+      </div>
+      <div class="features__flex__desc__details">
+        <h2>Super Fast</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur doloremque vero optio dolores. Porro, veritatis maxime! Minima nesciunt beatae mollitia!</p>
+      </div>
+    </div>
+    <div class="features__flex__desc">
+      <div class="features__flex__desc__image">
+        <img src="../../assets/images/transparent-logo-money-1.png" alt="myImage" />
+      </div>
+      <div class="features__flex__desc__details">
+        <h2>Affordable Prices</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur doloremque vero optio dolores. Porro, veritatis maxime! Minima nesciunt beatae mollitia!</p>
+      </div>
+    </div>
+    <div class="features__flex__desc">
+      <div class="features__flex__desc__image">
+        <img src="../../assets/images/options.png" alt="myImage" />
+      </div>
+      <div class="features__flex__desc__details">
+        <h2>The Most Options</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur doloremque vero optio dolores. Porro, veritatis maxime! Minima nesciunt beatae mollitia!</p>
+      </div>
+    </div>
+  </div>
+  <hr style="margin-top: 20px;">
+</div>
+
+<div class="roadsandwhy">
+  <div class="roadsandwhy__flex">
+      <div class="roadsandwhy__flex__roads">
+        <h3>Popular Roads</h3>
+        <ul>
+          <li>Cairo To Alex</li>
+          <li>Cairo To Sharm</li>
+          <li>Sharm To Alex</li>
+          <li>Cairo To Alex</li>
+          <li>Hurghada To Alex</li>
+          <li>Cairo To Tanta</li>
+          <li>Tanta To Alex</li>
+          <li>Ras-Sedr To Alex</li>
+        </ul>
+      </div>
+      <div class="roadsandwhy__flex__why">
+        <h3>Why Buy Bus Tickets From Us?</h3>
+        <ul>
+          <li>1- Buy bus tickets anytime from anywhere</li>
+          <li>2- Pay by credit card, mobile banking or cash</li>
+          <li>3- Dependable customer service (8 AM to 11 PM)</li>
+        </ul>
+      </div>
+  </div>
+</div>

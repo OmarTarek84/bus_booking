@@ -1,0 +1,55 @@
+<div class="create-route">
+  <h1>Create New Route</h1>
+  <form class="create-route__form" (ngSubmit)="onCreateRoute()" #f="ngForm">
+    <div class="create-route__form__input">
+      <label>Date From</label>
+      <input type="date" name="dateFrom" ngModel required #dateFrom="ngModel" (change)="onChangeDate($event)" />
+      <p class="create-route__form__input__notValid" *ngIf="dateFrom.hasError('required')&&dateFrom.touched">This field is required</p>
+    </div>
+    <div class="create-route__form__input">
+      <label>Bus Name</label>
+      <input type="text" name="busName" ngModel required #busName="ngModel" />
+      <p class="create-route__form__input__notValid" *ngIf="busName.hasError('required')&&busName.touched">This Field Is Required</p>
+    </div>
+    <div class="create-route__form__input">
+      <label>From</label>
+      <select required name="from" [(ngModel)]="fromSelect">
+        <option value="Cairo">Cairo</option>
+        <option value="Alex">Alex</option>
+        <option value="Hurghada">Hurghada</option>
+        <option value="Matrouh">Matrouh</option>
+        <option value="Fayed">Fayed</option>
+        <option value="Sharm">Sharm</option>
+      </select>
+    </div>
+    <div class="create-route__form__input">
+      <label>To</label>
+      <select  [(ngModel)]="toSelect" required name="to">
+        <option value="Cairo">Cairo</option>
+        <option value="Alex">Alex</option>
+        <option value="Hurghada">Hurghada</option>
+        <option value="Matrouh">Matrouh</option>
+        <option value="Fayed">Fayed</option>
+        <option value="Sharm">Sharm</option>
+      </select>
+    </div>
+    <div class="create-route__form__input">
+      <label>Department Time</label>
+      <input type="time" name="time" ngModel required name="depTime" #depTime="ngModel" />
+      <p class="create-route__form__input__notValid" *ngIf="depTime.hasError('required')&&depTime.touched">This Field is Required</p>
+    </div>
+    <div class="create-route__form__input">
+      <label>Coach Type</label>
+      <select [ngModel]="AC" required name="coachType">
+        <option value="AC">AC</option>
+        <option value="Non-AC">non-AC</option>
+      </select>
+    </div>
+    <div class="create-route__form__input">
+      <label>Fare</label>
+      <input type="number" name="fare" ngModel required name="fare" #fare="ngModel" />
+      <p class="create-route__form__input__notValid" *ngIf="fare.hasError('required')&&fare.touched">This Field is Required</p>
+    </div>
+    <button type="submit" [disabled]="f.invalid || dateInvalid">Submit</button>
+  </form>
+</div>

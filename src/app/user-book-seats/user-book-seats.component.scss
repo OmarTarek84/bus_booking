@@ -1,0 +1,80 @@
+.book-seats {
+  margin-top: 50px;
+  &__flex {
+    display: flex;
+    justify-content: space-around;
+    @media screen and (max-width: 650px) {
+      flex-wrap: wrap;
+    }
+    &__userForm {
+      flex: 0 0 60%;
+      @media screen and (max-width: 650px) {
+        flex: 0 0 80%;
+        order: 0;
+      }
+      &__form {
+        background-color: #e6e6e6;
+        padding: 35px 10px;
+        border-radius: 10px;
+        @media screen and (max-width: 650px) {
+          margin-top: 30px;
+        }
+        &__input {
+          &:not(:first-of-type) {
+            margin-top: 20px;
+          }
+          label {
+
+          }
+          input {
+            display: block;
+            padding: 4px 6px;
+            width: 90%;
+            outline: none;
+          }
+        }
+        button {
+          background-color: #2e2efd;
+          border: none;
+          cursor: pointer;
+          color: white;
+          border-radius: 5px;
+          padding: 6px 10px;
+          text-align: center;
+          margin-top: 20px;
+        }
+      }
+    }
+    &__details {
+      flex: 0 0 30%;
+      @media screen and (max-width: 650px) {
+        flex: 0 0 80%;
+        order: -1;
+      }
+      &__parent {
+        background-color: white;
+        padding: 20px;
+        @media screen and (max-width: 650px) {
+          text-align: center;
+        }
+        h2 {
+
+        }
+        hr {
+          margin: 15px 0;
+        }
+        h4 {
+          color: #2e2efd;
+          font-size: 21px;
+        }
+        p {
+          font-size: 13px;
+          span {
+            font-weight: bolder;
+            font-size: 14.3px;
+          }
+        }
+      }
+    }
+  }
+}

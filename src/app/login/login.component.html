@@ -1,0 +1,25 @@
+<div class="login">
+  <form class="login__form" (ngSubmit)="onLogin()" #f="ngForm">
+    <div class="login__form__input">
+      <label>Email</label>
+      <input type="email"
+             name="email"
+             ngModel
+             email
+             #emailInput="ngModel"
+             required />
+      <p class="login__form__input__notValid" *ngIf="emailInput.hasError('required')&&emailInput.touched">Email is required</p>
+      <p class="login__form__input__notValid" *ngIf="emailInput.hasError('email')&&emailInput.touched">Email is not valid</p>
+    </div>
+    <div class="login__form__input">
+      <label>Password</label>
+      <input type="password"
+             name="password"
+             ngModel
+             required
+             #passwordInput="ngModel" />
+      <p class="login__form__input__notValid" *ngIf="passwordInput.hasError('required')&&passwordInput.touched">Password is required</p>
+    </div>
+    <button type="submit" [disabled]="f.invalid">Login</button>
+  </form>
+</div>

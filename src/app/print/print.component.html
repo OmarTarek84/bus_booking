@@ -1,0 +1,53 @@
+<div class="ticket-parent">
+  <div class="ticket-parent__ticket">
+    <h5>Online Reservation</h5>
+    <p class="print">print</p>
+    <div class="ticket-parent__ticket__route">
+      <p>{{from}} {{to}}</p>
+      <p>{{dateFrom}}</p>
+      <p>busTicket.com</p>
+    </div>
+    <div class="ticket-parent__ticket__passenger">
+        <table>
+          <thead>
+            <tr>
+              <th>Passenger Details</th>
+              <th>Ticket ID</th>
+              <th>Seat No</th>
+              <th>Total Fare</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <p>{{fullName}}</p>
+                <p class="userEmail">{{email}}</p>
+              </td>
+              <td>{{orderId}}</td>
+              <td><span *ngFor="let seat of seatNumbers">{{seat.seatNumber}} </span></td>
+              <td>${{totalPrice}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="ticket-parent__ticket__bus">
+      <table>
+        <thead>
+          <tr>
+            <th>Bus Name</th>
+            <th>Reporting Time</th>
+            <th>Departure Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{busName}}</td>
+            <td>Before 30 minutes</td>
+            <td>{{depTime}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="counter">**Please Take this Ticket to the Counter**</p>
+</div>
