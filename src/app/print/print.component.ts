@@ -46,7 +46,7 @@ export class PrintComponent implements OnInit {
         return seat.seatNumber;
       })
     };
-    return this.http.post('http://localhost:8080/create-pdf', requestBody, {
+    return this.http.post('/create-pdf', requestBody, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       })

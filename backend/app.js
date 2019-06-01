@@ -10,11 +10,15 @@ const isAuth = require('./middleware/is-auth');
 
 const allSchemas = require('./schema/schema');
 const allResolvers = require('./resolvers/allResolvers');
+const compression = require('compression');
 
 const PDFdocument = require('pdfkit');
 
+app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use('/', express.static(path.join(__dirname, 'angular')));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -72,6 +76,9 @@ app.use('/graphql', graphQLHttp({
   graphiql: true
 }));
 
+app.get('/*', (req, res, next) => {
+  res.sendFile(express.static(path.join(__dirname, 'angular', 'index.html')));
+});
 
 mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster1-tmn4p.mongodb.net/${process.env.MONGO_DATABASE}`).then(res => {
   const server = app.listen(process.env.PORT || 8080);

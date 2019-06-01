@@ -74,7 +74,7 @@ export class SelectSeatsComponent implements OnInit {
         _id: this._id
       }
     };
-    return this.http.post('http://localhost:8080/graphql', requestBody, {
+    return this.http.post('/graphql', requestBody, {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     })
     .subscribe((result: ResultDataa) => {

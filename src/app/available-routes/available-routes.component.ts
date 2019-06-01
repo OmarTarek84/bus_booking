@@ -72,7 +72,7 @@ export class AvailableRoutesComponent implements OnInit, OnDestroy {
       }
     };
 
-    return this.http.post('http://localhost:8080/graphql', requestBody, {
+    return this.http.post('/graphql', requestBody, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.authService.getToken()
