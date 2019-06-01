@@ -135,6 +135,11 @@ module.exports = {
         const depTime = args.depTime;
         const from = args.from;
         const to = args.to;
+
+        if (!req.isAuth) {
+            throw new Error('Not Authorized');
+        }
+
         return Route.find({dateFrom: dateFrom, depTime: depTime, from: from, to: to}).then(routes => {
             return routes.map(route => {
                 return transformRoutes(route);

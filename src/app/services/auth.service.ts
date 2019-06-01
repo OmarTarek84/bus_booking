@@ -11,9 +11,13 @@ interface ResData {
 export class AuthService {
   token = null;
   userId = null;
+  isError = false;
 
   isAdmin = false;
   isAdminChanged = new Subject<boolean>();
+  errorChanged = new Subject<boolean>();
+  errorMessageChanged = new Subject<string>();
+  errorMessage;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -27,6 +31,10 @@ export class AuthService {
 
   getIsAdminChanged() {
     return this.isAdminChanged.asObservable();
+  }
+
+  getIsError() {
+    return this.isError;
   }
 
   login(email: string, password: string) {
@@ -96,5 +104,23 @@ export class AuthService {
       } else {
         this.logout();
       }
+  }
+
+  getErrorMessage(message) {
+    this.isError = true;
+    this.errorChanged.next(true);
+    this.errorMessage = message;
+    this.errorMessageChanged.next(message);
+  }
+
+  getMessage() {
+    return this.errorMessage;
+  }
+
+  onCloseError() {
+    this.isError = false;
+    this.errorChanged.next(false);
+    this.errorMessage = '';
+    this.errorMessageChanged.next('');
   }
 }

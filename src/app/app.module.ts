@@ -1,3 +1,4 @@
+import { ErrorInterceptor } from './errorintereptor';
 import { AuthGuard } from './guards/auth.guard';
 import { BookedGuard } from './guards/booked.guard';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,11 +18,12 @@ import { PrintComponent } from './print/print.component';
 import { LoginComponent } from './login/login.component';
 import { CreateRouteComponent } from './create-route/create-route.component';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { RouteService } from './services/routes.service';
 import { SpinnerComponent } from './UI/spinner/spinner.component';
 import { AvailableRoutesComponent } from './available-routes/available-routes.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -48,7 +50,8 @@ const routes: Routes = [
     LoginComponent,
     CreateRouteComponent,
     SpinnerComponent,
-    AvailableRoutesComponent
+    AvailableRoutesComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,12 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, RouteService, BookedGuard, AuthGuard],
+  providers: [AuthService, RouteService, BookedGuard, AuthGuard,
+              {
+                provide: HTTP_INTERCEPTORS,
+                useClass: ErrorInterceptor,
+                multi: true
+              }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

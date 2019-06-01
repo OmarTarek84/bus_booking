@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Seat } from './../../models/seat.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import openSocket from 'socket.io-client';
 
 interface ResultDataa {
   data: any;
@@ -44,7 +45,20 @@ export class SelectSeatsComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    const socket = openSocket('http://localhost:8080');
+    socket.on('seatsOrdered', data => {
+      const bookedSeatNumbers = data.seats;
+      const allInputValues = document.querySelectorAll('input[class="seatReserve"]');
+      bookedSeatNumbers.map(bookedSeat => {
+        allInputValues.forEach((i: ElementData) => {
+          if (bookedSeat === i.value) {
+            i.setAttribute('disabled', 'true');
+            i.style.cursor = 'auto';
+            i.nextElementSibling.children[0].src = '../../../assets/images/bookseat.png';
+          }
+        });
+      });
+    });
     const requestBody = {
       query: `
         query SearchRoute($_id: ID!) {

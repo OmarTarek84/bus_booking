@@ -1,6 +1,7 @@
+import { Subscription } from 'rxjs';
 import { AuthService } from './../services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -9,16 +10,26 @@ import { Router } from '@angular/router';
   templateUrl: './create-route.component.html',
   styleUrls: ['./create-route.component.scss']
 })
-export class CreateRouteComponent implements OnInit {
+export class CreateRouteComponent implements OnInit, OnDestroy {
 
   fromSelect = 'Cairo';
   toSelect = 'Alex';
   dateInvalid = false;
+  isError = false;
+  subscription: Subscription;
   @ViewChild('f') createRouteForm: NgForm;
 
   constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    this.isError = this.authService.getIsError();
+    this.subscription = this.authService.errorChanged.subscribe(error => {
+      this.isError = error;
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onChangeDate(e) {
@@ -33,6 +44,7 @@ export class CreateRouteComponent implements OnInit {
     if (this.createRouteForm.invalid) {
       return;
     }
+    // this.createRouteForm.reset();
     const requestBody = {
       query: `
         mutation CreateRoute($from: String!, $to: String!, $dateFrom: String!, $depTime: String!, $coachType: String!, $busName: String!, $fare: Float!) {

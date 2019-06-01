@@ -18,7 +18,8 @@
           <p style="color: red;" *ngIf="email.hasError('required')&&email.touched">This Field Is Required!</p>
           <p style="color: red;" *ngIf="email.hasError('email')&&email.touched">Email Is Not Valid!</p>
         </div>
-        <button type="submit" [disabled]="!f.valid">Submit</button>
+        <button *ngIf="!isLoading" type="submit" [disabled]="!f.valid">BOOK NOW!</button>
+        <app-spinner *ngIf="isLoading"></app-spinner>
       </form>
     </div>
     <div class="book-seats__flex__details">

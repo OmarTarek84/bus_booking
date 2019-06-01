@@ -34,6 +34,8 @@
     "mongoose": "^5.5.11",
     "pdfkit": "^0.9.1",
     "rxjs": "~6.3.3",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },

@@ -25,6 +25,7 @@ export class UserBookSeatsComponent implements OnInit {
   busName;
   coachType;
   totalPrice;
+  isLoading = false;
   seats: Seat[] = [];
   constructor(private router: Router, private http: HttpClient) {
     this._id = this.router.getCurrentNavigation().extras.state._id;
@@ -42,6 +43,7 @@ export class UserBookSeatsComponent implements OnInit {
   }
 
   onPurchaseSeats() {
+    this.isLoading = true;
     const requestBody = {
       query: `
         mutation CreateOrder (
@@ -87,6 +89,7 @@ export class UserBookSeatsComponent implements OnInit {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     })
     .subscribe((result: ResultData) => {
+      this.isLoading = false;
       this.router.navigate(['/ticket'], {state: {data: {
         _id: result.data.createOrder._id,
         from: this.from,

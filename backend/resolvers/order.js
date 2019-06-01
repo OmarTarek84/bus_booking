@@ -1,5 +1,6 @@
 const Order = require('../models/order');
 const Route = require('../models/route');
+const io = require('../../socket.js');
 
 const {transformOrders} = require('./merge');
 module.exports = {
@@ -36,6 +37,15 @@ module.exports = {
                         $set: {seats: [...res.seats]}
                     })
                     .then(re => {
+                        const bookedSeats = res.seats.filter(seat => {
+                            return seat.booked == true;
+                        });
+                        const fSeats = bookedSeats.map(s => {
+                            return s.seatNumber;
+                        });
+                        io.getIO().emit('seatsOrdered', {
+                            seats: fSeats
+                        });
                         return transformOrders(result);
                     });
                 });

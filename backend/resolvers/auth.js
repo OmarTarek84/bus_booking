@@ -31,11 +31,11 @@ module.exports = {
   loginUser: (args, req) => {
     return User.findOne({email: args.userInput.email}).then(user => {
       if (!user) {
-        throw new Error('Invalid Username Or Password');
+        throw new Error('Invalid Email Or Password');
       }
       return bcrypt.compare(args.userInput.password, user.password).then(isMatch => {
         if (!isMatch) {
-          throw new Error('Invalid Username Or Password');
+          throw new Error('Invalid Email Or Password');
         }
         const token = jwt.sign({
           userId: user._id,

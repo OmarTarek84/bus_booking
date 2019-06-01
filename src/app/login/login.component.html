@@ -1,4 +1,5 @@
 <div class="login">
+  <app-error *ngIf="isError"></app-error>
   <form class="login__form" (ngSubmit)="onLogin()" #f="ngForm">
     <div class="login__form__input">
       <label>Email</label>

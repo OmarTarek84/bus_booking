@@ -74,7 +74,11 @@ app.use('/graphql', graphQLHttp({
 
 
 mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster1-tmn4p.mongodb.net/${process.env.MONGO_DATABASE}`).then(res => {
-  console.log('connected');
+  const server = app.listen(process.env.PORT || 8080);
+  const io = require('../socket.js').init(server);
+  io.on('connection', socket => {
+    console.log('connected');
+  });
 })
 .catch(err => {
   console.log(err);

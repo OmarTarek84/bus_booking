@@ -1,4 +1,5 @@
 <div class="orders">
+  <app-error *ngIf="isError"></app-error>
   <h1>All Orders</h1>
   <form class="orders__form" (ngSubmit)="onSearchOrders()" #f="ngForm">
     <label for="dateFrom">Date</label>
