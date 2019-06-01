@@ -45,7 +45,7 @@ export class SelectSeatsComponent implements OnInit {
   }
 
   ngOnInit() {
-    const socket = openSocket('http://localhost:8080');
+    const socket = openSocket('/');
     socket.on('seatsOrdered', data => {
       const bookedSeatNumbers = data.seats;
       const allInputValues = document.querySelectorAll('input[class="seatReserve"]');
