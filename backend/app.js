@@ -77,7 +77,7 @@ app.use('/graphql', graphQLHttp({
 }));
 
 app.get('/*', (req, res, next) => {
-  res.sendFile(express.static(path.join(__dirname, 'angular', 'index.html')));
+  res.sendFile(path.join(__dirname, 'angular', 'index.html'));
 });
 
 mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster1-tmn4p.mongodb.net/${process.env.MONGO_DATABASE}`).then(res => {
