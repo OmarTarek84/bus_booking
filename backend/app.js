@@ -12,8 +12,6 @@ const allSchemas = require('./schema/schema');
 const allResolvers = require('./resolvers/allResolvers');
 const compression = require('compression');
 
-const PDFdocument = require('pdfkit');
-
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -32,44 +30,44 @@ app.use((req, res, next) => {
 
 app.use(isAuth);
 
-app.post('/create-pdf', (req, res) => {
-  const inVoiceName = req.body.orderId + '.pdf';
-  const invoicePath = path.join(__dirname, 'PDFdocument', inVoiceName);
-  const pdfDoc = new PDFdocument();
-  res.setHeader('Content-Type', 'application/pdf');
-  res.setHeader('Content-Disposition', 'inline; filename="'+ inVoiceName +'"');
-  pdfDoc.pipe(fs.createWriteStream(invoicePath));
-  pdfDoc.pipe(res);
-  pdfDoc.fontSize(29).text('Bus Ticket', {
-    underline: true,
-    align: 'center',
-    lineGap: 40
-  });
-  pdfDoc.fontSize(20).text(`Full Name: ${req.body.fullName}`, {
-    align: 'left',
-    lineGap: 10
-  });
-  pdfDoc.fontSize(20).text(`Seats: ${req.body.seats}`, {
-    align: 'left',
-    lineGap: 10
-  });
-  pdfDoc.fontSize(20).text(`Ticket ID: ${req.body.orderId}`, {
-    align: 'left',
-    lineGap: 10
-  });
-  pdfDoc.fontSize(20).text(`Date: ${req.body.dateFrom}`, {
-    align: 'left',
-    lineGap: 10
-  });
-  pdfDoc.fontSize(20).text(`Departure Time: ${req.body.depTime}`, {
-    align: 'left',
-    lineGap: 10
-  });
-  pdfDoc.fillColor('red').fontSize(17).text('@bus-ticket.com', {
-    align: 'center'
-  })
-  pdfDoc.end();
-});
+// app.post('/create-pdf', (req, res) => {
+//   const inVoiceName = req.body.orderId + '.pdf';
+//   const invoicePath = path.join(__dirname, 'PDFdocument', inVoiceName);
+//   const pdfDoc = new PDFdocument();
+//   res.setHeader('Content-Type', 'application/pdf');
+//   res.setHeader('Content-Disposition', 'inline; filename="'+ inVoiceName +'"');
+//   pdfDoc.pipe(fs.createWriteStream(invoicePath));
+//   pdfDoc.pipe(res);
+//   pdfDoc.fontSize(29).text('Bus Ticket', {
+//     underline: true,
+//     align: 'center',
+//     lineGap: 40
+//   });
+//   pdfDoc.fontSize(20).text(`Full Name: ${req.body.fullName}`, {
+//     align: 'left',
+//     lineGap: 10
+//   });
+//   pdfDoc.fontSize(20).text(`Seats: ${req.body.seats}`, {
+//     align: 'left',
+//     lineGap: 10
+//   });
+//   pdfDoc.fontSize(20).text(`Ticket ID: ${req.body.orderId}`, {
+//     align: 'left',
+//     lineGap: 10
+//   });
+//   pdfDoc.fontSize(20).text(`Date: ${req.body.dateFrom}`, {
+//     align: 'left',
+//     lineGap: 10
+//   });
+//   pdfDoc.fontSize(20).text(`Departure Time: ${req.body.depTime}`, {
+//     align: 'left',
+//     lineGap: 10
+//   });
+//   pdfDoc.fillColor('red').fontSize(17).text('@bus-ticket.com', {
+//     align: 'center'
+//   })
+//   pdfDoc.end();
+// });
 app.use('/graphql', graphQLHttp({
   schema: allSchemas,
   rootValue: allResolvers,

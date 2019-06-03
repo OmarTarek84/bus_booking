@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Seat } from '../models/seat.model';
+import * as JsPDF from 'jspdf';
 
 @Component({
   selector: 'app-print',
@@ -20,6 +21,8 @@ export class PrintComponent implements OnInit {
   depTime;
   seatNumbers: Seat[] = [];
   busName;
+  @ViewChild('printContent') printContent: ElementRef;
+
   constructor(private router: Router, private http: HttpClient) {
     this.from = this.router.getCurrentNavigation().extras.state.data.from;
     this.to = this.router.getCurrentNavigation().extras.state.data.to;
@@ -37,20 +40,21 @@ export class PrintComponent implements OnInit {
   }
 
   downloadPDF() {
-    const requestBody = {
-      orderId: this.orderId,
-      dateFrom: this.dateFrom,
-      fullName: this.fullName,
-      depTime: this.depTime,
-      seats: this.seatNumbers.map(seat => {
-        return seat.seatNumber;
-      })
+    const doc = new JsPDF();
+    const specialElementHandlers = {
+      '#editor': function (element, renderer) {
+        return true;
+      }
     };
-    return this.http.post('/create-pdf', requestBody, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      })
-    }).subscribe();
+
+    const content = this.printContent.nativeElement;
+
+    doc.fromHTML(content.innerHTML, 15, 15, {
+      'width': 210,
+      'elementHandlers': specialElementHandlers
+    });
+
+    doc.save(this.orderId + '.pdf');
   }
 
 }
