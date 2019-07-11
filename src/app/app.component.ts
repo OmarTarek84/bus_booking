@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'bus-ticket';
 
   ngOnInit() {
-    openSocket('/');
+    openSocket('http://localhost:8080');
     this.authService.autoAuthData();
   }
 }

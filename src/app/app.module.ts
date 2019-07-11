@@ -6,6 +6,8 @@ import { BookedGuard } from './guards/booked.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -40,7 +42,8 @@ import { SharedModule } from './shared.module';
     AppRoutingModule,
     HttpClientModule,
     BookingModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService, RouteService, BookedGuard, AuthGuard,
               {

@@ -85,7 +85,7 @@ export class UserBookSeatsComponent implements OnInit {
       }
     };
 
-    return this.http.post('/graphql', requestBody, {
+    return this.http.post('http://localhost:8080/graphql', requestBody, {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     })
     .subscribe((result: ResultData) => {

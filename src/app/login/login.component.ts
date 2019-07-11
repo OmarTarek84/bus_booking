@@ -1,15 +1,20 @@
 import { Subscription } from 'rxjs';
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, HostBinding } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { routeAnimation } from '../route-animation';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [
+    routeAnimation
+  ]
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
+  @HostBinding('@routeTrigger') route = true;
   @ViewChild('f') loginForm: NgForm;
   isError = false;
   subscription: Subscription;

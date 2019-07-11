@@ -1,14 +1,18 @@
 import { Subscription } from 'rxjs';
 import { AuthService } from './../services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, HostBinding } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { routeAnimation } from '../route-animation';
 
 @Component({
   selector: 'app-create-route',
   templateUrl: './create-route.component.html',
-  styleUrls: ['./create-route.component.scss']
+  styleUrls: ['./create-route.component.scss'],
+  animations: [
+    routeAnimation
+  ]
 })
 export class CreateRouteComponent implements OnInit, OnDestroy {
 
@@ -18,6 +22,7 @@ export class CreateRouteComponent implements OnInit, OnDestroy {
   isError = false;
   subscription: Subscription;
   @ViewChild('f') createRouteForm: NgForm;
+  @HostBinding('@routeTrigger') route = true;
 
   constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
 
@@ -144,7 +149,7 @@ export class CreateRouteComponent implements OnInit, OnDestroy {
       }
     };
 
-    return this.http.post('/graphql', requestBody, {
+    return this.http.post('http://localhost:8080/graphql', requestBody, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.authService.getToken()

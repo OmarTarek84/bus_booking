@@ -1,7 +1,8 @@
+import { routeAnimation } from './../route-animation';
 import { Subscription } from 'rxjs';
 import { AuthService } from './../services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, HostBinding } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 interface ResultDatta {
@@ -11,10 +12,14 @@ interface ResultDatta {
 @Component({
   selector: 'app-available-routes',
   templateUrl: './available-routes.component.html',
-  styleUrls: ['./available-routes.component.scss']
+  styleUrls: ['./available-routes.component.scss'],
+  animations: [
+    routeAnimation
+  ]
 })
 export class AvailableRoutesComponent implements OnInit, OnDestroy {
 
+  @HostBinding('@routeTrigger') route = true;
   @ViewChild('f') searchForm: NgForm;
   searched = false;
   foundOrders = [];
@@ -72,7 +77,7 @@ export class AvailableRoutesComponent implements OnInit, OnDestroy {
       }
     };
 
-    return this.http.post('/graphql', requestBody, {
+    return this.http.post('http://localhost:8080/graphql', requestBody, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.authService.getToken()

@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Seat } from './../../models/seat.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import openSocket from 'socket.io-client';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 interface ResultDataa {
   data: any;
@@ -18,7 +19,25 @@ interface ElementData {
 @Component({
   selector: 'app-select-seats',
   templateUrl: './select-seats.component.html',
-  styleUrls: ['./select-seats.component.scss']
+  styleUrls: ['./select-seats.component.scss'],
+  animations: [
+    trigger('viewSeats', [
+      transition(':enter', [
+          style({
+              transform: 'translate(-50%, -160%)',
+              zIndex: 9999999
+          }),
+          animate(800)
+      ]),
+      transition(':leave', [
+          animate(800, style({
+              transform: 'translate(-50%, -160%)',
+              zIndex: 9999999
+          }))
+      ])
+  ],
+)
+  ]
 })
 export class SelectSeatsComponent implements OnInit {
 
@@ -45,7 +64,7 @@ export class SelectSeatsComponent implements OnInit {
   }
 
   ngOnInit() {
-    const socket = openSocket('/');
+    const socket = openSocket('http://localhost:8080');
     socket.on('seatsOrdered', data => {
       const bookedSeatNumbers = data.seats;
       const allInputValues = document.querySelectorAll('input[class="seatReserve"]');
@@ -74,7 +93,7 @@ export class SelectSeatsComponent implements OnInit {
         _id: this._id
       }
     };
-    return this.http.post('/graphql', requestBody, {
+    return this.http.post('http://localhost:8080/graphql', requestBody, {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     })
     .subscribe((result: ResultDataa) => {

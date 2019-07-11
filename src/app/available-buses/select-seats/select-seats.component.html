@@ -1,5 +1,5 @@
 <div class="modal">
-  <div class="modal__select-seats-parent" *ngIf="!isLoading">
+  <div class="modal__select-seats-parent" *ngIf="!isLoading" @viewSeats>
       <p class="modal__select-seats-parent__close" routerLink="/search">close</p>
     <div class="modal__select-seats-parent__select-seats">
       <h2>Select your Seat(s)</h2>

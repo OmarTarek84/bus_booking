@@ -1,9 +1,0 @@
-{
-  "env": {
-    "MONGO_USER": "omar",
-    "MONGO_PASSWORD": "VFpVsRzNbfYNkW4u",
-    "MONGO_DATABASE": "bus-booking",
-    "JWT_SECRET": "Fwjoi3u493jeFKEYOwuetjio5uv48",
-    "NODEMAILER_KEY": "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"
-  }
-}

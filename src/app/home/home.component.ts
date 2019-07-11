@@ -1,14 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostBinding } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { RouteService } from '../services/routes.service';
+import { routeAnimation } from '../route-animation';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    routeAnimation
+  ]
 })
 export class HomeComponent implements OnInit {
 
+  @HostBinding('@routeTrigger') route = true;
   places = [];
   fromSelect = 'Cairo';
   toSelect = 'Alex';
