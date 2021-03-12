@@ -36,7 +36,7 @@
     "graphql": "^14.3.1",
     "html-pdf": "^2.2.0",
     "jsonwebtoken": "^8.5.1",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "mongoose": "^5.5.11",
     "nodemailer": "^6.2.1",
     "nodemailer-sendgrid-transport": "^0.2.0",
